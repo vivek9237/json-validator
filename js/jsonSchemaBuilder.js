@@ -203,7 +203,7 @@ function getAttributeTitle(attribute) {
 
 }
 function getAttributeDescription(attribute) {
-	var connectionType = document.getElementById("connectiontype").value;
+	var connectionType = "NONE";
 	console.log(attributeToTitleDescJson[connectionType]);
 	if (connectionType == "NONE") {
 		return "";
@@ -517,3 +517,23 @@ document.addEventListener("click", closeAllSelect);
 console.log(attributeToTitleDescJson);
 
 getAttributeDescription("Accept");
+
+function getQueryParam(name) {
+	const urlParams = new URLSearchParams(window.location.search);
+	return urlParams.get(name);
+
+}
+function decodeBase64(base64String) {
+	return decodeURIComponent(atob(base64String).split('').map(function(c) {
+		return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+	}).join(''));
+}
+
+const base64Data = getQueryParam('data');
+console.log("base64Data")
+console.log(base64Data)
+if (base64Data) {
+	const decodedData = decodeBase64(base64Data);
+	console.log(decodedData)
+	jsonSchemaEditor.getDoc().setValue(decodedData);
+}
