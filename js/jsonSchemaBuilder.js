@@ -596,7 +596,7 @@ const base64Data = getQueryParam('data');
 if (base64Data) {
 	const decodedData = decodeBase64(base64Data);
 	jsonSchemaEditor.getDoc().setValue(decodedData);
-	history.pushState(null, '', 'json-validator');
+	history.pushState(null, '', 'https://vivek9237.github.io/json-validator/');
 } else{
 	jsonSchemaEditor.getDoc().setValue(localStorage.getItem('vivek9237-json-validator'));
 }
