@@ -71,10 +71,10 @@ body {
   background: #e86711;
 }
 .controls__button_beta:hover {
-  color: #b514ff;
+  color: #ffffff;
   background: #b514ff5d;
   box-shadow: 0 0 100px #b514ff;
-  text-shadow: 0 0 20px #b514ff;
+  text-shadow: 0 0 30px #ffffff;
 }
 /*
 ###########
