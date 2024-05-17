@@ -57,6 +57,15 @@ $(document).ready(function () {
 			}
 		}
 	);
+	$('input#escapeJsonCheckbox').change(
+		function () {
+			if ($(this).is(':checked')) {
+				escapeJsons();
+			} else {
+				unescapeJsons();
+			}
+		}
+	);
 });
 
 var textareaHeight = 500;
@@ -89,29 +98,31 @@ jsonSchemaEditor.on('change', jsonSchemaEditor => {
 setTimeout(updateHints, 100);
 var widgets = [];
 function updateHints() {
-	jsonSchemaEditor.operation(function () {
-		for (var i = 0; i < widgets.length; ++i)
-			jsonSchemaEditor.removeLineWidget(widgets[i]);
-		widgets.length = 0;
+	if (!$('input#escapeJsonCheckbox').is(':checked')) {
+		jsonSchemaEditor.operation(function () {
+			for (var i = 0; i < widgets.length; ++i)
+				jsonSchemaEditor.removeLineWidget(widgets[i]);
+			widgets.length = 0;
 
-		JSHINT(jsonSchemaEditor.getValue());
-		for (var i = 0; i < JSHINT.errors.length; ++i) {
-			var err = JSHINT.errors[i];
-			if (!err) continue;
-			var msg = document.createElement("div");
-			var icon = msg.appendChild(document.createElement("span"));
-			icon.innerHTML = "⛔";
-			icon.className = "lint-error-icon";
-			msg.appendChild(document.createTextNode(err.reason));//Show detailed error
-			msg.className = "lint-error";
-			widgets.push(jsonSchemaEditor.addLineWidget(err.line - 1, msg, { coverGutter: false, noHScroll: true }));
-			break;// added by vivek | it will only show one error
-		}
-	});
-	var info = jsonSchemaEditor.getScrollInfo();
-	var after = jsonSchemaEditor.charCoords({ line: jsonSchemaEditor.getCursor().line + 1, ch: 0 }, "local").top;
-	if (info.top + info.clientHeight < after)
-		jsonSchemaEditor.scrollTo(null, after - info.clientHeight + 3);
+			JSHINT(jsonSchemaEditor.getValue());
+			for (var i = 0; i < JSHINT.errors.length; ++i) {
+				var err = JSHINT.errors[i];
+				if (!err) continue;
+				var msg = document.createElement("div");
+				var icon = msg.appendChild(document.createElement("span"));
+				icon.innerHTML = "⛔";
+				icon.className = "lint-error-icon";
+				msg.appendChild(document.createTextNode(err.reason));//Show detailed error
+				msg.className = "lint-error";
+				widgets.push(jsonSchemaEditor.addLineWidget(err.line - 1, msg, { coverGutter: false, noHScroll: true }));
+				break;// added by vivek | it will only show one error
+			}
+		});
+		var info = jsonSchemaEditor.getScrollInfo();
+		var after = jsonSchemaEditor.charCoords({ line: jsonSchemaEditor.getCursor().line + 1, ch: 0 }, "local").top;
+		if (info.top + info.clientHeight < after)
+			jsonSchemaEditor.scrollTo(null, after - info.clientHeight + 3);
+	}
 }
 
 
@@ -179,6 +190,16 @@ function beautifyJsons() {
 	} catch (err) {
 		console.log("Unable to parse jsonSchema Editor");
 	}
+}
+
+function escapeJsons() {
+	var escapedString = JSON.stringify(jsonSchemaEditor.getDoc().getValue());
+	jsonSchemaEditor.getDoc().setValue(escapedString);
+}
+
+function unescapeJsons() {
+	var unescapedString = JSON.parse(jsonSchemaEditor.getDoc().getValue());
+	jsonSchemaEditor.getDoc().setValue(unescapedString);
 }
 
 function getAttributeTitle(attribute) {
@@ -524,7 +545,7 @@ function getQueryParam(name) {
 
 }
 function decodeBase64(base64String) {
-	return decodeURIComponent(atob(base64String).split('').map(function(c) {
+	return decodeURIComponent(atob(base64String).split('').map(function (c) {
 		return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
 	}).join(''));
 }
