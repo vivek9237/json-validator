@@ -39,6 +39,7 @@ readAttributeToTitleDesc("properties/attributeToTitleDesc.json");
 readAttributeProperties("properties/attributeProperties.json");
 
 $(document).ready(function () {
+	jsonSchemaEditor.getDoc().setValue(localStorage.getItem('vivek9237-json-validator'));
 	$('input#wordwrapCheckbox').change(
 		function () {
 			if ($(this).is(':checked')) {
@@ -89,6 +90,7 @@ var jsonSchemaEditor = CodeMirror.fromTextArea
 	});
 jsonSchemaEditor.on('change', jsonSchemaEditor => {
 	try {
+		localStorage.setItem('vivek9237-json-validator', jsonSchemaEditor.getDoc().getValue());
 		clearTimeout(waiting);
 		waiting = setTimeout(updateHints, 500);
 	} catch (err) {
