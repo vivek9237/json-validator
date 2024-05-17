@@ -442,7 +442,7 @@ function copyJSONSchema() {
 }
 function shareJsons() {
 	var inputJsonText = jsonSchemaEditor.getDoc().getValue();
-	navigator.clipboard.writeText("https://vivek9237.github.io/json-validator?data="+encodeBase64(inputJsonText));
+	navigator.clipboard.writeText("https://vivek9237.github.io/json-validator?data="+urlEncode(encodeBase64(inputJsonText)));
 }
 function copyJson(editorName) {
 	/* Get the text field */
@@ -588,12 +588,15 @@ function encodeBase64(input) {
     return btoa(input);
 }
 
+function urlEncode(input) {
+    return encodeURIComponent(input);
+}
+
 const base64Data = getQueryParam('data');
 if (base64Data) {
-	console.log(base64Data);
 	const decodedData = decodeBase64(base64Data);
-	console.log(decodedData);
 	jsonSchemaEditor.getDoc().setValue(decodedData);
+	history.pushState(null, '', 'json-validator');
 } else{
 	jsonSchemaEditor.getDoc().setValue(localStorage.getItem('vivek9237-json-validator'));
 }
