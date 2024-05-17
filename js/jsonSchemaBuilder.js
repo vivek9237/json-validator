@@ -43,7 +43,6 @@ readAttributeToTitleDesc("properties/attributeToTitleDesc.json");
 readAttributeProperties("properties/attributeProperties.json");
 
 $(document).ready(function () {
-	jsonSchemaEditor.getDoc().setValue(localStorage.getItem('vivek9237-json-validator'));
 	$('input#wordwrapCheckbox').change(
 		function () {
 			if ($(this).is(':checked')) {
@@ -84,6 +83,11 @@ $(document).ready(function () {
 	$('button#copyJSONSchema').click(
 		function () {
 			copyJSONSchema();
+		}
+	);
+	$('button#shareJsons').click(
+		function () {
+			shareJsons();
 		}
 	);
 });
@@ -436,6 +440,10 @@ function copyJSONSchema() {
 	var copyText = jsonSchemaEditor.getDoc().getValue();
 	navigator.clipboard.writeText(copyText);
 }
+function shareJsons() {
+	var inputJsonText = jsonSchemaEditor.getDoc().getValue();
+	navigator.clipboard.writeText("https://vivek9237.github.io/json-validator?data="+encodeBase64(inputJsonText));
+}
 function copyJson(editorName) {
 	/* Get the text field */
 	if (editorName == "JSON Schema") {
@@ -576,11 +584,15 @@ function decodeBase64(base64String) {
 	}).join(''));
 }
 
+function encodeBase64(input) {
+    return btoa(input);
+}
+
 const base64Data = getQueryParam('data');
-console.log("base64Data")
-console.log(base64Data)
 if (base64Data) {
 	const decodedData = decodeBase64(base64Data);
 	console.log(decodedData)
 	jsonSchemaEditor.getDoc().setValue(decodedData);
+} else{
+	jsonSchemaEditor.getDoc().setValue(localStorage.getItem('vivek9237-json-validator'));
 }
