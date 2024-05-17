@@ -57,6 +57,15 @@ $(document).ready(function () {
 			}
 		}
 	);
+	$('input#escapeJsonCheckbox').change(
+		function () {
+			if ($(this).is(':checked')) {
+				escapeJsons();
+			} else {
+				unescapeJsons();
+			}
+		}
+	);
 });
 
 var textareaHeight = 500;
@@ -179,6 +188,16 @@ function beautifyJsons() {
 	} catch (err) {
 		console.log("Unable to parse jsonSchema Editor");
 	}
+}
+
+function escapeJsons(){
+	var escapedString = JSON.stringify(jsonSchemaEditor.getDoc().getValue());
+	jsonSchemaEditor.getDoc().setValue(escapedString);
+}
+
+function unescapeJsons(){
+	var unescapedString = JSON.parse(jsonSchemaEditor.getDoc().getValue());
+	jsonSchemaEditor.getDoc().setValue(unescapedString);
 }
 
 function getAttributeTitle(attribute) {
