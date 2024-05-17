@@ -590,8 +590,9 @@ function encodeBase64(input) {
 
 const base64Data = getQueryParam('data');
 if (base64Data) {
+	console.log(base64Data);
 	const decodedData = decodeBase64(base64Data);
-	console.log(decodedData)
+	console.log(decodedData);
 	jsonSchemaEditor.getDoc().setValue(decodedData);
 } else{
 	jsonSchemaEditor.getDoc().setValue(localStorage.getItem('vivek9237-json-validator'));
