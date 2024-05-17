@@ -1,5 +1,3 @@
-import { jsonrepair } from 'https://cdn.jsdelivr.net/npm/jsonrepair/+esm'
-
 var tab = '';
 var attributeToTitleDescJson;
 var sensitiveAttributes;
@@ -19,7 +17,6 @@ function readAttributeToTitleDesc(file) {
 	}
 	rawFile.send(null);
 }
-
 function readAttributeProperties(file) {
 	var rawFile = new XMLHttpRequest();
 	rawFile.open("GET", file, false);
@@ -38,7 +35,6 @@ function readAttributeProperties(file) {
 	}
 	rawFile.send(null);
 }
-
 readAttributeToTitleDesc("properties/attributeToTitleDesc.json");
 readAttributeProperties("properties/attributeProperties.json");
 
@@ -69,21 +65,6 @@ $(document).ready(function () {
 			} else {
 				unescapeJsons();
 			}
-		}
-	);
-	$('button#fixJsons').click(
-		function () {
-			fixJsons();
-		}
-	);
-	$('button#clearJsons').click(
-		function () {
-			clearJsons();
-		}
-	);
-	$('button#copyJSONSchema').click(
-		function () {
-			copyJSONSchema();
 		}
 	);
 });
@@ -175,12 +156,7 @@ function isNumeric(str) {
 	return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
 		!isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
 }
-function fixJsons() {
-	var inputJsonValue = jsonSchemaEditor.getDoc().getValue();
-	var correctedJSON = jsonrepair(inputJsonValue);
-	jsonSchemaEditor.getDoc().setValue(correctedJSON);
-	beautifyJsons();
-}
+
 function clearJsons() {
 	jsonSchemaEditor.getDoc().setValue("");
 }
