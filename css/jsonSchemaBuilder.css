@@ -51,7 +51,30 @@ body {
 }
 
 .controls__button:active {
-  background: #118ae8;
+  background: #118be8be;
+}
+.controls__button_beta {
+  padding: 8px 14px;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 2px solid #b514ff;
+  outline: none;
+  cursor: pointer;
+  background: none;
+  color: #b514ff;
+  font-weight: bold;
+  font-family: "Roboto";
+}
+
+.controls__button_beta:active {
+  background: #e86711;
+}
+.controls__button_beta:hover {
+  color: #b514ff;
+  background: #b514ff5d;
+  box-shadow: 0 0 100px #b514ff;
+  text-shadow: 0 0 20px #b514ff;
 }
 /*
 ###########
