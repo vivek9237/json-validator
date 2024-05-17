@@ -2,6 +2,15 @@
 <html>
 
 <head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5RXW4LJ1D4"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-5RXW4LJ1D4');
+	</script>
 	<link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon">
 
 	<title>JSON Validator</title>
@@ -80,15 +89,15 @@
 					<span class="labels" data-on="Escape" data-off="Trap"></span>
 				</label>
 				&nbsp;
-				<button type="button" id="fixJsons" class="controls__button_beta controls__button--minify">Fix JSON</button>
+				<button type="button" id="fixJsons" class="controls__button_beta controls__button--minify">Fix
+					JSON</button>
 				&nbsp;
 				&nbsp;
 				<button type="button" id="copyJSONSchema"
 					class="controls__button controls__button--minify">Copy</button>
 				&nbsp;
 				&nbsp;
-				<button type="button" id="shareJsons"
-					class="controls__button controls__button--minify">Share</button>
+				<button type="button" id="shareJsons" class="controls__button controls__button--minify">Share</button>
 				&nbsp;
 				&nbsp;
 				<button type="button" id="clearJsons" class="controls__button controls__button--minify">Clear</button>
