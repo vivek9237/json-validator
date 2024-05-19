@@ -7,6 +7,7 @@ Welcome to the JSON Validator! This tool allows you to validate, format, and bea
 - **Validate JSON**: Check your JSON data for errors and ensure it is correctly formatted.
 - **Format JSON**: Beautify your JSON data for better readability.
 - **Compact JSON**: Minify your JSON data by removing unnecessary whitespace.
+- **Fix JSON**: Fix common JSON errors by replacing incorrect quotes, adding missing quotes, correcting numeric keys, lowercasing literals, escaping unescaped characters, and removing comments and trailing commas.
 
 ## How to Use
 
@@ -22,6 +23,9 @@ Welcome to the JSON Validator! This tool allows you to validate, format, and bea
 5. **Minify JSON**:
    - Click the "Minify" toggle to minify your JSON data.
    - The minified JSON will appear in the output text area.
+6. **Fix JSON**:
+   - Click the "Fix JSON" button to fix errors in your JSON data.
+   - The fixed JSON will appear in the output text area.
 
 
 ## Development
