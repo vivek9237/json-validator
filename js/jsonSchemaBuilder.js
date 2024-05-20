@@ -48,6 +48,14 @@ $(document).ready(function () {
 			shareJsons();
 		}
 	);
+	// Event listener for Ctrl + S
+	document.addEventListener('keydown', function(e) {
+		if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+			e.preventDefault(); // Prevent the default browser save action
+			const content = jsonSchemaEditor.getDoc().getValue();
+			saveToFile('json-validator-code.json', content);
+		}
+	});
 });
 
 var waiting;
@@ -81,7 +89,22 @@ jsonSchemaEditor.on('change', jsonSchemaEditor => {
 setTimeout(updateHints, 100);
 
 var widgets = [];
+var where = 'bottom';
+var numPanels = 0;
+jsonSchemaEditor.setSize("100%", "100%");
+const base64Data = getQueryParam('data');
+if (base64Data) {
+	const decodedData = decodeBase64(base64Data);
+	jsonSchemaEditor.getDoc().setValue(decodedData);
+	history.pushState(null, '', 'https://vivek9237.github.io/json-validator/');
+} else {
+	jsonSchemaEditor.getDoc().setValue(localStorage.getItem('vivek9237-json-validator'));
+}
 
+
+
+
+/**********************************Functions***************************************************/
 function updateHints() {
 	if (!$('input#escapeJsonCheckbox').is(':checked')) {
 		jsonSchemaEditor.operation(function () {
@@ -111,8 +134,6 @@ function updateHints() {
 }
 
 
-var where = 'bottom';
-var numPanels = 0;
 
 function makePanel(where, editorName) {
 	var node = document.createElement("div");
@@ -130,7 +151,6 @@ function makePanel(where, editorName) {
 	return node;
 }
 
-jsonSchemaEditor.setSize("100%", "100%");
 
 function fixJsons() {
 	var inputJsonValue = jsonSchemaEditor.getDoc().getValue();
@@ -201,7 +221,6 @@ function shareJsons() {
 				text: 'Checkout this JSON Configuration',
 				url: "https://vivek9237.github.io/json-validator?data=" + urlEncode(encodeBase64(inputJsonText)),
 			});
-			console.log('Successfully shared');
 		} catch (error) {
 			console.error('Error sharing', error);
 		}
@@ -238,11 +257,13 @@ function urlEncode(input) {
 	return encodeURIComponent(input);
 }
 
-const base64Data = getQueryParam('data');
-if (base64Data) {
-	const decodedData = decodeBase64(base64Data);
-	jsonSchemaEditor.getDoc().setValue(decodedData);
-	history.pushState(null, '', 'https://vivek9237.github.io/json-validator/');
-} else {
-	jsonSchemaEditor.getDoc().setValue(localStorage.getItem('vivek9237-json-validator'));
+// Function to save content as a file
+function saveToFile(filename, content) {
+	const blob = new Blob([content], { type: 'application/json' });
+	const a = document.createElement('a');
+	a.href = URL.createObjectURL(blob);
+	a.download = filename;
+	document.body.appendChild(a);
+	a.click();
+	document.body.removeChild(a);
 }
