@@ -193,7 +193,21 @@ function copyJSONSchema() {
 }
 function shareJsons() {
 	var inputJsonText = jsonSchemaEditor.getDoc().getValue();
-	navigator.clipboard.writeText("https://vivek9237.github.io/json-validator?data=" + urlEncode(encodeBase64(inputJsonText)));
+	//navigator.clipboard.writeText("https://vivek9237.github.io/json-validator?data=" + urlEncode(encodeBase64(inputJsonText)));
+	if (navigator.share) {
+		try {
+			navigator.share({
+				title: 'JSON Validator and Formatter',
+				text: 'Checkout this JSON Configuration',
+				url: "https://vivek9237.github.io/json-validator?data=" + urlEncode(encodeBase64(inputJsonText)),
+			});
+			console.log('Successfully shared');
+		} catch (error) {
+			console.error('Error sharing', error);
+		}
+	} else {
+		alert('Web Share API not supported in this browser.');
+	}
 }
 function copyJson(editorName) {
 	/* Get the text field */
