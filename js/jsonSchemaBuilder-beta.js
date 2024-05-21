@@ -167,7 +167,7 @@ const base64Data = getQueryParam('data');
 if (base64Data) {
 	const decodedData = decodeBase64(base64Data);
 	jsonSchemaEditor.getDoc().setValue(decodedData);
-	history.pushState(null, '', 'https://vivek9237.github.io/json-validator/');
+	history.pushState(null, '', 'https://vivek9237.github.io/json-validator/beta.html');
 } else {
 	jsonSchemaEditor.getDoc().setValue(localStorage.getItem('vivek9237-json-validator'));
 }
@@ -289,7 +289,7 @@ function shareJsons() {
 			navigator.share({
 				title: 'JSON Validator and Formatter',
 				text: 'Checkout this JSON Configuration',
-				url: "https://vivek9237.github.io/json-validator?data=" + urlEncode(encodeBase64(inputJsonText)),
+				url: "https://vivek9237.github.io/json-validator/beta.html?data=" + urlEncode(encodeBase64(inputJsonText)),
 			});
 		} catch (error) {
 			console.error('Error sharing', error);
