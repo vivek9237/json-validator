@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>JSON Validator and Formatter - Free Online Tool</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description"
+		content="Validate and format JSON data online easily with our free tool. Ensure your JSON code is error-free and well-structured for better readability and integration.">
+	<meta name="keywords"
+		content="JSON, validator, formatter, online tool, free, validate JSON, format JSON, JSON validation, JSON formatting, fix JSON, repair JSON">
+
+	<!-- Open Graph Tags (for social media sharing) -->
+	<meta property="og:title" content="JSON Validator and Formatter - Free Online Tool">
+	<meta property="og:description"
+		content="Validate and format JSON data online easily with our free tool. Ensure your JSON code is error-free and well-structured for better readability and integration.">
+	<meta property="og:image" content="https://github.com/vivek9237/json-validator/blob/main/icons/favicon.ico">
+	<meta property="og:url" content="https://vivek9237.github.io/json-validator/">
+	<meta property="og:type" content="website">
+
+	<!-- Twitter Card Tags (for Twitter sharing) -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="JSON Validator and Formatter - Free Online Tool">
+	<meta name="twitter:description"
+		content="Validate and format JSON data online easily with our free tool. Ensure your JSON code is error-free and well-structured for better readability and integration.">
+	<meta name="twitter:image" content="https://github.com/vivek9237/json-validator/blob/main/icons/favicon.ico">
+	<meta name="twitter:url" content="https://vivek9237.github.io/json-validator/">
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-5RXW4LJ1D4"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-5RXW4LJ1D4');
+	</script>
+	<link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon">
+	<link href="css/codemirror.css" rel="stylesheet">
+	<script src="js/codemirror.js"></script>
+	<link href="css/simplescrollbars.css" rel="stylesheet">
+	<script src="js/simplescrollbars.js"></script>
+	<script src="js/clipboard.js"></script>
+	<script src="js/panel.js"></script>
+	<script src="js/javascript.js"></script>
+	<script src="js/placeholder.js"></script>
+	<link href="css/jsonSchemaBuilder-beta.css" rel="stylesheet">
+	<link href="css/dracula.css" rel="stylesheet">
+	<script src="js/fullscreen.js"></script>
+	<link href="css/fullscreen.css" rel="stylesheet">
+	<script type="text/javascript" src="js/lodash.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jshint/2.9.5/jshint.min.js"></script>
+	<style>
+		.toolbar {
+			display: flex;
+			justify-content: space-between;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0);
+            border-bottom: 2px solid #000000;
+            gap: 5px;
+        }
+        .toolbar button {
+            padding: 5px 10px;
+            font-size: 10px;
+            cursor: pointer;
+        }
+		.CodeMirror {
+			border: 1px solid black;
+		}
+
+		.lint-error {
+			font-family: arial;
+			font-size: 80%;
+			background: rgb(247, 192, 192);
+			color: #a00;
+			font-weight: bold;
+			padding: 2px 5px 3px;
+		}
+
+		.lint-error-icon {
+			color: white;
+			background-color: rgb(247, 190, 190);
+			font-weight: bold;
+			border-radius: 50%;
+			padding: 0 3px;
+			margin-right: 7px;
+		}
+	</style>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+		crossorigin="anonymous"></script>
+	<!-- JQuery CDN -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<meta name="google-site-verification" content="IuSs37pUss7HK10KwJdAt4ah7w3hFrIt_V6KgN-ZwDM" />
+</head>
+
+<body style="background-color:black;">
+	<div class="container-fluid" style="height:100%">
+		<div class="container">
+			<textarea id="jsonSchemaArea" placeholder='{"Craft your JSON masterpiece":"💙"}'></textarea>
+			<br>
+			<!--
+			<div class="controls">
+				
+				<a href="https://github.com/vivek9237"><img
+					src="https://img.shields.io/badge/vivek9237-000000?style=for-the-badge&logo=GITHUB&logoColor=white"
+					style="max-width: 105%; height:130%;"></a>
+				
+			</div>
+			-->
+			<script type="module" src="js/jsonSchemaBuilder-beta.js"></script>
+		</div>
+	</div>
+</body>
+
+</html>
