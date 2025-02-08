@@ -309,7 +309,9 @@ function getQueryParam(name) {
 
 function getBase64Data(){
 	var urlarr = window.location.href.split('#data=');
+	console.log(urlarr[0]);
 	if(urlarr.length > 1 ){
+		console.log(urlarr[1]);
 		return urlarr[1];
 	}
 	return null;
