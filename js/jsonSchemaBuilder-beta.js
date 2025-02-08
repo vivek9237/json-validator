@@ -289,31 +289,27 @@ function shareJsons() {
 			});
 			*/
 			const isIframe = window !== window.parent;
-			if(!isIframe){
+			
+			if (!isIframe) {
+				// Not inside an iframe: Call navigator.share directly
 				if (navigator.share) {
-					try {
-						navigator.share({
-							title: 'JSON Validator and Formatter',
+					navigator.share({
+						title: 'JSON Validator and Formatter',
 							text: 'Checkout this JSON Configuration',
 							url: "https://vivek9237.github.io/json-validator/beta.html#data=" + urlEncode(encodeBase64(inputJsonText)),
-						});
-					} catch (err) {
-						console.error("Sharing failed", err);
-					}
-				} 
-			}			
-			else {
-				// If inside an iframe, send message to parent
-				window.parent.postMessage(
-					{
-						type: "share",
-						title: 'JSON Validator and Formatter',
-						text: 'Checkout this JSON Configuration',
-						url: "https://vivek9237.github.io/json-validator/beta.html#data=" + urlEncode(encodeBase64(inputJsonText))
-					},
-					"*"
-				);
-			} 
+					}).catch(console.error);
+				} else {
+					alert("Sharing not supported.");
+				}
+			} else {
+				// Inside an iframe: Send message to Chrome extension popup
+				chrome.runtime.sendMessage({
+					action: "share",
+					title: 'JSON Validator and Formatter',
+							text: 'Checkout this JSON Configuration',
+							url: "https://vivek9237.github.io/json-validator/beta.html#data=" + urlEncode(encodeBase64(inputJsonText))
+				});
+			}
 		} catch (error) {
 			console.error('Error sharing', error);
 		}
