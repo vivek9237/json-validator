@@ -72,52 +72,98 @@ $(document).ready(function () {
 			downloadJSON();
 		}
 	});
-
-	var newDiv = $(
-		`<div class="toolbar">
-			<div class="left-buttons">
-			<label class="">
-				<button id="beautify" title="Beautify JSON" class="left-buttons controls__button controls__button--minify">
-					<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="16" height="16" aria-label="" role="presentation" viewBox="0 0 512 512" style=""><path fill="currentColor" d="M 0,32 v 64 h 416 v -64 z M 160,160 v 64 h 352 v -64 z M 160,288 v 64 h 288 v -64 z M 0,416 v 64 h 320 v -64 z"></path></svg>
-				</button>
-			</label>
-			<!-- NOT YET SUPPORTED
-			<label class="">
-				<button id="beautifyJSONCompact" title="test" class="left-buttons controls__button controls__button--minify">
-					<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="16" height="16" aria-label="" role="presentation" viewBox="0 0 512 512" style=""><path fill="currentColor" d="m 448,512 -15,-49 -49,-15 49,-15 15,-49 15,49 49,15 -45,15 zM 335,512 294,376 156,335 292,294 333,156 374,292 512,333 376,374 Z M 0,32 V 96 H 512 V 32 Z M 0,288 v 64 h 128 v -64 Z M 0,160 v 64 h 256 v -64 Z "></path>  </svg>
-				</button>
-			</label>
-			-->
-			<label class="">
-				<button id="minify" title="Minify JSON" class="left-buttons controls__button controls__button--minify">
-					<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="16" height="16" aria-label="" role="presentation" viewBox="0 0 512 512" style=""><path fill="currentColor" d="M 0,32 v 64 h 512 v -64 z M 0,160 v 64 h 512 v -64 z M 0,288 v 64 h 352 v -64 z"></path>  </svg>
-				</button>
-			</label>
-			<label class="">
-				<button id="fixJsons" title="Fix Errors" class="left-buttons controls__button_beta controls__button--minify">
-				<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="16" height="16" aria-label="" role="presentation" viewBox="0 0 512 512" style=""><path fill="currentColor" d="M352 320c88.4 0 160-71.6 160-160c0-15.3-2.2-30.1-6.2-44.2c-3.1-10.8-16.4-13.2-24.3-5.3l-76.8 76.8c-3 3-7.1 4.7-11.3 4.7H336c-8.8 0-16-7.2-16-16V118.6c0-4.2 1.7-8.3 4.7-11.3l76.8-76.8c7.9-7.9 5.4-21.2-5.3-24.3C382.1 2.2 367.3 0 352 0C263.6 0 192 71.6 192 160c0 19.1 3.4 37.5 9.5 54.5L19.9 396.1C7.2 408.8 0 426.1 0 444.1C0 481.6 30.4 512 67.9 512c18 0 35.3-7.2 48-19.9L297.5 310.5c17 6.2 35.4 9.5 54.5 9.5zM80 408a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"></path></svg>
-				</button>
-			</label>
-			</div>
-			<div class="right-buttons">
-			<label class="">
-				<button id="clearJsons" title="Clear Editor" class="right-buttons controls__button controls__button--minify">
-					<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="14" height="16" aria-label="" role="presentation" viewBox="0 0 448 512" style=""><path fill="currentColor" d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z"></path>  </svg>
-				</button>
-			</label>
-			<label class="">
-				<button id="downloadJSON" title="Download JSON" class="right-buttons controls__button controls__button--minify">
-				<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="14" height="16" aria-label="" role="presentation" viewBox="0 0 448 512" style=""> <path fill="currentColor" d="M212.991,249.518c9.767,9.66,25.508,9.624,35.25-0.1l74.888-74.887c9.763-9.763,9.763-25.592,0-35.355 				c-9.762-9.763-25.591-9.763-35.355,0l-32.21,32.209V47.596c0-13.808-11.193-25-25-25s-25,11.192-25,25v123.79l-32.21-32.209 				c-9.764-9.764-25.593-9.764-35.355,0c-9.763,9.764-9.763,25.593,0,35.355C139.121,175.656,211.868,248.403,212.991,249.518z"/> 			<path fill="currentColor" d="M431.654,312.404H28.346C12.691,312.404,0,325.094,0,340.75v68.307c0,15.655,12.691,28.346,28.346,28.346h403.307 				c15.655,0,28.346-12.691,28.346-28.346V340.75C460,325.094,447.309,312.404,431.654,312.404z"/></svg>
-				</button>
-			</label>
-			<label class="">
-				<button id="shareJsons" title="Share JSON" class="right-buttons controls__button controls__button--minify">
-					<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="14" height="16" aria-label="" role="presentation" viewBox="0 0 448 512" style=""> <path fill="currentColor" d="M339.588,314.529c-14.215,0-27.456,4.133-38.621,11.239l-112.682-78.67c1.809-6.315,2.798-12.976,2.798-19.871 				c0-6.896-0.989-13.557-2.798-19.871l109.64-76.547c11.764,8.356,26.133,13.286,41.662,13.286c39.79,0,72.047-32.257,72.047-72.047 				C411.634,32.258,379.378,0,339.588,0c-39.79,0-72.047,32.257-72.047,72.047c0,5.255,0.578,10.373,1.646,15.308l-112.424,78.491 				c-10.974-6.759-23.892-10.666-37.727-10.666c-39.79,0-72.047,32.257-72.047,72.047s32.256,72.047,72.047,72.047 				c13.834,0,26.753-3.907,37.727-10.666l113.292,79.097c-1.629,6.017-2.514,12.34-2.514,18.872c0,39.79,32.257,72.047,72.047,72.047 				c39.79,0,72.047-32.257,72.047-72.047C411.635,346.787,379.378,314.529,339.588,314.529z"/></svg>
-				</button>
-			</label>
-			</div>
-		</div>`
-	);
+	var newDiv = "";
+	const isIframe = window !== window.parent;
+	if (!isIframe) {
+		newDiv = $(
+			`<div class="toolbar">
+				<div class="left-buttons">
+				<label class="">
+					<button id="beautify" title="Beautify JSON" class="left-buttons controls__button controls__button--minify">
+						<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="16" height="16" aria-label="" role="presentation" viewBox="0 0 512 512" style=""><path fill="currentColor" d="M 0,32 v 64 h 416 v -64 z M 160,160 v 64 h 352 v -64 z M 160,288 v 64 h 288 v -64 z M 0,416 v 64 h 320 v -64 z"></path></svg>
+					</button>
+				</label>
+				<!-- NOT YET SUPPORTED
+				<label class="">
+					<button id="beautifyJSONCompact" title="test" class="left-buttons controls__button controls__button--minify">
+						<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="16" height="16" aria-label="" role="presentation" viewBox="0 0 512 512" style=""><path fill="currentColor" d="m 448,512 -15,-49 -49,-15 49,-15 15,-49 15,49 49,15 -45,15 zM 335,512 294,376 156,335 292,294 333,156 374,292 512,333 376,374 Z M 0,32 V 96 H 512 V 32 Z M 0,288 v 64 h 128 v -64 Z M 0,160 v 64 h 256 v -64 Z "></path>  </svg>
+					</button>
+				</label>
+				-->
+				<label class="">
+					<button id="minify" title="Minify JSON" class="left-buttons controls__button controls__button--minify">
+						<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="16" height="16" aria-label="" role="presentation" viewBox="0 0 512 512" style=""><path fill="currentColor" d="M 0,32 v 64 h 512 v -64 z M 0,160 v 64 h 512 v -64 z M 0,288 v 64 h 352 v -64 z"></path>  </svg>
+					</button>
+				</label>
+				<label class="">
+					<button id="fixJsons" title="Fix Errors" class="left-buttons controls__button_beta controls__button--minify">
+					<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="16" height="16" aria-label="" role="presentation" viewBox="0 0 512 512" style=""><path fill="currentColor" d="M352 320c88.4 0 160-71.6 160-160c0-15.3-2.2-30.1-6.2-44.2c-3.1-10.8-16.4-13.2-24.3-5.3l-76.8 76.8c-3 3-7.1 4.7-11.3 4.7H336c-8.8 0-16-7.2-16-16V118.6c0-4.2 1.7-8.3 4.7-11.3l76.8-76.8c7.9-7.9 5.4-21.2-5.3-24.3C382.1 2.2 367.3 0 352 0C263.6 0 192 71.6 192 160c0 19.1 3.4 37.5 9.5 54.5L19.9 396.1C7.2 408.8 0 426.1 0 444.1C0 481.6 30.4 512 67.9 512c18 0 35.3-7.2 48-19.9L297.5 310.5c17 6.2 35.4 9.5 54.5 9.5zM80 408a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"></path></svg>
+					</button>
+				</label>
+				</div>
+				<div class="right-buttons">
+				<label class="">
+					<button id="clearJsons" title="Clear Editor" class="right-buttons controls__button controls__button--minify">
+						<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="14" height="16" aria-label="" role="presentation" viewBox="0 0 448 512" style=""><path fill="currentColor" d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z"></path>  </svg>
+					</button>
+				</label>
+				<label class="">
+					<button id="downloadJSON" title="Download JSON" class="right-buttons controls__button controls__button--minify">
+					<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="14" height="16" aria-label="" role="presentation" viewBox="0 0 448 512" style=""> <path fill="currentColor" d="M212.991,249.518c9.767,9.66,25.508,9.624,35.25-0.1l74.888-74.887c9.763-9.763,9.763-25.592,0-35.355 				c-9.762-9.763-25.591-9.763-35.355,0l-32.21,32.209V47.596c0-13.808-11.193-25-25-25s-25,11.192-25,25v123.79l-32.21-32.209 				c-9.764-9.764-25.593-9.764-35.355,0c-9.763,9.764-9.763,25.593,0,35.355C139.121,175.656,211.868,248.403,212.991,249.518z"/> 			<path fill="currentColor" d="M431.654,312.404H28.346C12.691,312.404,0,325.094,0,340.75v68.307c0,15.655,12.691,28.346,28.346,28.346h403.307 				c15.655,0,28.346-12.691,28.346-28.346V340.75C460,325.094,447.309,312.404,431.654,312.404z"/></svg>
+					</button>
+				</label>
+				<label class="">
+					<button id="shareJsons" title="Share JSON" class="right-buttons controls__button controls__button--minify">
+						<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="14" height="16" aria-label="" role="presentation" viewBox="0 0 448 512" style=""> <path fill="currentColor" d="M339.588,314.529c-14.215,0-27.456,4.133-38.621,11.239l-112.682-78.67c1.809-6.315,2.798-12.976,2.798-19.871 				c0-6.896-0.989-13.557-2.798-19.871l109.64-76.547c11.764,8.356,26.133,13.286,41.662,13.286c39.79,0,72.047-32.257,72.047-72.047 				C411.634,32.258,379.378,0,339.588,0c-39.79,0-72.047,32.257-72.047,72.047c0,5.255,0.578,10.373,1.646,15.308l-112.424,78.491 				c-10.974-6.759-23.892-10.666-37.727-10.666c-39.79,0-72.047,32.257-72.047,72.047s32.256,72.047,72.047,72.047 				c13.834,0,26.753-3.907,37.727-10.666l113.292,79.097c-1.629,6.017-2.514,12.34-2.514,18.872c0,39.79,32.257,72.047,72.047,72.047 				c39.79,0,72.047-32.257,72.047-72.047C411.635,346.787,379.378,314.529,339.588,314.529z"/></svg>
+					</button>
+				</label>
+				</div>
+			</div>`
+		);
+	}
+	else{
+		newDiv = $(
+			`<div class="toolbar">
+				<div class="left-buttons">
+				<label class="">
+					<button id="beautify" title="Beautify JSON" class="left-buttons controls__button controls__button--minify">
+						<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="16" height="16" aria-label="" role="presentation" viewBox="0 0 512 512" style=""><path fill="currentColor" d="M 0,32 v 64 h 416 v -64 z M 160,160 v 64 h 352 v -64 z M 160,288 v 64 h 288 v -64 z M 0,416 v 64 h 320 v -64 z"></path></svg>
+					</button>
+				</label>
+				<!-- NOT YET SUPPORTED
+				<label class="">
+					<button id="beautifyJSONCompact" title="test" class="left-buttons controls__button controls__button--minify">
+						<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="16" height="16" aria-label="" role="presentation" viewBox="0 0 512 512" style=""><path fill="currentColor" d="m 448,512 -15,-49 -49,-15 49,-15 15,-49 15,49 49,15 -45,15 zM 335,512 294,376 156,335 292,294 333,156 374,292 512,333 376,374 Z M 0,32 V 96 H 512 V 32 Z M 0,288 v 64 h 128 v -64 Z M 0,160 v 64 h 256 v -64 Z "></path>  </svg>
+					</button>
+				</label>
+				-->
+				<label class="">
+					<button id="minify" title="Minify JSON" class="left-buttons controls__button controls__button--minify">
+						<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="16" height="16" aria-label="" role="presentation" viewBox="0 0 512 512" style=""><path fill="currentColor" d="M 0,32 v 64 h 512 v -64 z M 0,160 v 64 h 512 v -64 z M 0,288 v 64 h 352 v -64 z"></path>  </svg>
+					</button>
+				</label>
+				<label class="">
+					<button id="fixJsons" title="Fix Errors" class="left-buttons controls__button_beta controls__button--minify">
+					<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="16" height="16" aria-label="" role="presentation" viewBox="0 0 512 512" style=""><path fill="currentColor" d="M352 320c88.4 0 160-71.6 160-160c0-15.3-2.2-30.1-6.2-44.2c-3.1-10.8-16.4-13.2-24.3-5.3l-76.8 76.8c-3 3-7.1 4.7-11.3 4.7H336c-8.8 0-16-7.2-16-16V118.6c0-4.2 1.7-8.3 4.7-11.3l76.8-76.8c7.9-7.9 5.4-21.2-5.3-24.3C382.1 2.2 367.3 0 352 0C263.6 0 192 71.6 192 160c0 19.1 3.4 37.5 9.5 54.5L19.9 396.1C7.2 408.8 0 426.1 0 444.1C0 481.6 30.4 512 67.9 512c18 0 35.3-7.2 48-19.9L297.5 310.5c17 6.2 35.4 9.5 54.5 9.5zM80 408a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"></path></svg>
+					</button>
+				</label>
+				</div>
+				<div class="right-buttons">
+				<label class="">
+					<button id="clearJsons" title="Clear Editor" class="right-buttons controls__button controls__button--minify">
+						<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="14" height="16" aria-label="" role="presentation" viewBox="0 0 448 512" style=""><path fill="currentColor" d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z"></path>  </svg>
+					</button>
+				</label>
+				<label class="">
+					<button id="downloadJSON" title="Download JSON" class="right-buttons controls__button controls__button--minify">
+					<svg version="1.1" class="fa-icon svelte-1mc5hvj" width="14" height="16" aria-label="" role="presentation" viewBox="0 0 448 512" style=""> <path fill="currentColor" d="M212.991,249.518c9.767,9.66,25.508,9.624,35.25-0.1l74.888-74.887c9.763-9.763,9.763-25.592,0-35.355 				c-9.762-9.763-25.591-9.763-35.355,0l-32.21,32.209V47.596c0-13.808-11.193-25-25-25s-25,11.192-25,25v123.79l-32.21-32.209 				c-9.764-9.764-25.593-9.764-35.355,0c-9.763,9.764-9.763,25.593,0,35.355C139.121,175.656,211.868,248.403,212.991,249.518z"/> 			<path fill="currentColor" d="M431.654,312.404H28.346C12.691,312.404,0,325.094,0,340.75v68.307c0,15.655,12.691,28.346,28.346,28.346h403.307 				c15.655,0,28.346-12.691,28.346-28.346V340.75C460,325.094,447.309,312.404,431.654,312.404z"/></svg>
+					</button>
+				</label>
+				</div>
+			</div>`
+		);
+	}
+	
 	var delayInMilliseconds = 1; //1 second
 	setTimeout(function () {
 		$("div.CodeMirror.cm-s-dracula.CodeMirror-wrap.CodeMirror-simplescroll").prepend(newDiv);
