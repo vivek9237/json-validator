@@ -281,11 +281,22 @@ function shareJsons() {
 	//navigator.clipboard.writeText("https://vivek9237.github.io/json-validator?data=" + urlEncode(encodeBase64(inputJsonText)));
 	if (navigator.share) {
 		try {
+			/*
 			navigator.share({
 				title: 'JSON Validator and Formatter',
 				text: 'Checkout this JSON Configuration',
 				url: "https://vivek9237.github.io/json-validator/beta.html#data=" + urlEncode(encodeBase64(inputJsonText)),
 			});
+			*/
+			window.parent.postMessage(
+				{
+					type: "share",
+					title: "JSON Validator and Formatter",
+					text: "Checkout this JSON Configuration",
+					url: "https://vivek9237.github.io/json-validator/beta.html#data=" + urlEncode(encodeBase64(inputJsonText))
+				},
+				"*"
+			);
 		} catch (error) {
 			console.error('Error sharing', error);
 		}
@@ -293,6 +304,7 @@ function shareJsons() {
 		alert('Web Share API not supported in this browser.');
 	}
 }
+
 function copyJson(editorName) {
 	/* Get the text field */
 	if (editorName == "JSON Schema") {
