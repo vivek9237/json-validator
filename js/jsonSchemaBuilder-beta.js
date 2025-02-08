@@ -158,7 +158,7 @@ var widgets = [];
 var where = 'bottom';
 var numPanels = 0;
 jsonSchemaEditor.setSize("100%", "100%");
-const base64Data = getQueryParam('data');
+const base64Data = getBase64Data();
 if (base64Data) {
 	const decodedData = decodeBase64(base64Data);
 	jsonSchemaEditor.getDoc().setValue(decodedData);
@@ -284,7 +284,7 @@ function shareJsons() {
 			navigator.share({
 				title: 'JSON Validator and Formatter',
 				text: 'Checkout this JSON Configuration',
-				url: "https://vivek9237.github.io/json-validator/beta.html?data=" + urlEncode(encodeBase64(inputJsonText)),
+				url: "https://vivek9237.github.io/json-validator/beta.html#data=" + urlEncode(encodeBase64(inputJsonText)),
 			});
 		} catch (error) {
 			console.error('Error sharing', error);
@@ -305,7 +305,14 @@ function copyJson(editorName) {
 function getQueryParam(name) {
 	const urlParams = new URLSearchParams(window.location.search);
 	return urlParams.get(name);
+}
 
+function getBase64Data(){
+	var urlarr = window.location.href.split('#data=');
+	if(urlarr.length > 1 ){
+		return urlarr[1];
+	}
+	return null;
 }
 
 function decodeBase64(base64String) {
